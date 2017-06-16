@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="MyAplicationStyle" parent="AppTheme"></style>
+    <style name="MyAplicationStyle" parent="AppTheme"/>
+    <style name="MyActivityStyle" parent="AppTheme"/>
 
 </resources>

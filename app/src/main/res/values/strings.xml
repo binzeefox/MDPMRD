@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">密码管理器</string>
+    <string name="main_toolbar_tip">↑\n这\n里\n可\n以\n上\n划\n隐\n藏\n哦</string>
 </resources>

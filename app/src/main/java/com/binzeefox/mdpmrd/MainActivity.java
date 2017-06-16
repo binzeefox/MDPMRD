@@ -15,9 +15,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import com.binzeefox.mdpmrd.db.User;
 import com.binzeefox.mdpmrd.util.CommonUtil;
@@ -28,7 +30,7 @@ import org.litepal.crud.DataSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     /* UI标签 */
     private int uiTag;
@@ -68,14 +70,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab.setOnClickListener(this);
         fab_commit.setOnClickListener(this);
         userImage.setOnClickListener(this);
+        SharedPreferences pref = getSharedPreferences("userData", MODE_PRIVATE);
+        String lastUserName = pref.getString("lastUserName", null);
+        tilUserName.getEditText().setText(lastUserName);
 
         setSupportActionBar(toolbar);
-        SharedPreferences pref = getSharedPreferences("userData", MODE_PRIVATE);
         String url_string = pref.getString("userImageUrl", "");
         if (!url_string.isEmpty()) {
             Glide.with(this).load(url_string).into(userImage);
-            TextView hint = (TextView) findViewById(R.id.image_hint);
-            hint.setVisibility(View.GONE);
+            TextView hint1 = (TextView) findViewById(R.id.image_hint);
+            hint1.setVisibility(View.GONE);
         }
     }
 
@@ -145,7 +149,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(MainActivity.this, UserActivity.class);
         User user = DataSupport.find(User.class, id);
         intent.putExtra("user",user );
+
+        SharedPreferences.Editor editor = getSharedPreferences("userData", MODE_PRIVATE).edit();
+        editor.putString("lastUserName", tilUserName.getEditText().getText().toString());
+        editor.apply();
         startActivity(intent);
+        finish();
     }
 
     /**

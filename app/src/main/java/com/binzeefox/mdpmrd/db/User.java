@@ -14,15 +14,7 @@ public class User extends DataSupport implements Serializable{
     private String userName;
     private String md5Psd;
     private String email;
-//    private URL imageUrl;
-//
-//    public URL getImageUrl() {
-//        return imageUrl;
-//    }
-//
-//    public void setImageUrl(URL imageUrl) {
-//        this.imageUrl = imageUrl;
-//    }
+
 
     public int getId() {
         return id;

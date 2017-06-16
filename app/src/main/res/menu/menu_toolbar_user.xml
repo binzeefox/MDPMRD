@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/user_setting"
+        android:title="账户设置"
+        android:icon="@mipmap/ic_account_circle_black_24dp"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/user_clear"
+        android:title="清除数据"/>
+
+    <item
+        android:id="@+id/user_suicide"
+        android:title="注销并删除用户"/>
+    <item
+        android:id="@+id/user_exit"
+        android:title="用户登出"
+        android:icon="@mipmap/ic_power_settings_new_black_24dp"
+        app:showAsAction="never"/>
+</menu>
