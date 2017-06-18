@@ -116,9 +116,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 } else if (uiTag == STATE_REGISTER){
                     if (UserUtil.checkRegister(tilUserName, tilEmail, tilPsd, tilPsdCheck)){
-                        uiSwitch();
+                        int id = UserUtil.getUserId(userName);
                         CommonUtil.showToast(this, "注册成功");
-                        uiTag = STATE_LOGIN;
+                        jumpToUser(id);
                     }
                 }
                 break;
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // TODO 写入开启登陆界面算法
                 resetEditView();
                 toolbarLayout.setTitle("请登陆");
-                fab.setImageResource(R.mipmap.ic_add_black_24dp);
+                fab.setImageResource(R.mipmap.ic_playlist_add_black_24dp);
                 tilPsdCheck.setVisibility(View.GONE);
                 tilEmail.setVisibility(View.GONE);
                 break;
